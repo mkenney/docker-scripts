@@ -1,8 +1,8 @@
 web:
     image: mkenney/reverse-proxy:latest
-    container_name: haproxy
+    container_name: reverse-proxy
     ports:
         - "80:80"
-    hostname: nginx-proxy
+    hostname: reverse-proxy
     volumes:
         - /var/run/docker.sock:/tmp/docker.sock:ro
