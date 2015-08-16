@@ -1,0 +1,18 @@
+web:
+    image: mkenney/base-web:latest
+    container_name: www
+    ports:
+        - "80"
+    hostname: docker.9c0.com
+    volumes:
+        - .:/var/www/html/
+        - /tmp:/tmp
+        - /tmp/common-web-logs/log/httpd:/var/log/httpd
+        - /etc/localtime:/etc/localtime:ro
+    environment:
+        - server_env=dev
+        - env=1
+        - is_docker=1
+        - VIRTUAL_HOST=docker.9c0.com # Used in the vhost config and can also be
+                                      # used by jwilder/nginx-proxy reverse proxy
+                                      # docker container

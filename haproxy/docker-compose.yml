@@ -1,0 +1,8 @@
+web:
+    image: jwilder/nginx-proxy:latest
+    container_name: haproxy
+    ports:
+        - "80:80"
+    hostname: haproxy
+    volumes:
+        - /var/run/docker.sock:/tmp/docker.sock:ro
