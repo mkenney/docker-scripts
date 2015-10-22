@@ -6,3 +6,5 @@ web:
     hostname: reverse-proxy
     volumes:
         - /var/run/docker.sock:/tmp/docker.sock:ro
+    restart: always
+
