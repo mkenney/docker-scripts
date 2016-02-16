@@ -16,3 +16,5 @@ web:
         - VIRTUAL_HOST=docker.webbedlam.com # Used in the vhost config and can also
                                             # be used by the mkenney/reverse-proxy
                                             # image
+    restart: always
+
