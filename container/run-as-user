@@ -15,5 +15,5 @@ fi
 groupmod -g $(stat -c '%g' $stat_dir) -o $1 > /dev/null 2>&1
 usermod -u $(stat -c '%u' $stat_dir) -o $1 > /dev/null 2>&1
 chown -R $1:$1 ~$1/ > /dev/null 2>&1
-
+echo "running 'sudo -u $@'"
 sudo -u $@
