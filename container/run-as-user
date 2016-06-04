@@ -1,0 +1,18 @@
+#!/bin/sh
+
+##############################################################################
+# By default, change the dev user's uid and gid to match the user that owns
+# the project directory and run a command as that user. If a ~/.ssh directory
+# exists and it's not owned by root then run as that user instead.
+##############################################################################
+
+stat_dir="/src"
+if [ -d "/home/dev/.ssh" ] && [ "0" != "$(stat -c '%g' /home/dev/.ssh)" ] && [ "0" != "$(stat -c '%u' /home/dev/.ssh)" ]; then
+    stat_dir="/home/dev/.ssh"
+fi
+
+groupmod -g $(stat -c '%g' $stat_dir) -o dev > /dev/null 2>&1
+usermod -u $(stat -c '%u' $stat_dir) -o dev > /dev/null 2>&1
+chown -R dev:dev ~dev/ > /dev/null 2>&1
+
+sudo -u dev $@
