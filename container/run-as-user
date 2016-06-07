@@ -8,12 +8,12 @@
 ##############################################################################
 
 stat_dir="/src"
-if [ -d "/home/$1/.ssh" ] && [ "0" != "$(stat -c '%g' /home/$1/.ssh)" ] && [ "0" != "$(stat -c '%u' /home/$1/.ssh)" ]; then
-    stat_dir="/home/$1/.ssh"
+if [ -d "/home/dev/.ssh" ] && [ "0" != "$(stat -c '%g' /home/dev/.ssh)" ] && [ "0" != "$(stat -c '%u' /home/dev/.ssh)" ]; then
+    stat_dir="/home/dev/.ssh"
 fi
 
-groupmod -g $(stat -c '%g' $stat_dir) -o $1 > /dev/null 2>&1
-usermod -u $(stat -c '%u' $stat_dir) -o $1 > /dev/null 2>&1
-chown -R $1:$1 ~$1/ > /dev/null 2>&1
+groupmod -g $(stat -c '%g' $stat_dir) -o dev > /dev/null 2>&1
+usermod -u $(stat -c '%u' $stat_dir) -o dev > /dev/null 2>&1
+chown -R dev:dev ~dev/ > /dev/null 2>&1
 
 sudo -u $@
