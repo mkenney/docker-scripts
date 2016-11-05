@@ -1,10 +1,10 @@
 #!/bin/sh
 
 ##############################################################################
-# By default, change the specified user's uid and gid to match the user that
-# owns the project directory and run a command as that user. If a ~/.ssh
-# directory exists and it's not owned by root then switch and run as that user
-# instead.
+# By default, change the dev user's uid and gid to match the user that owns
+# the project directory and run a command as that user. If a ~/.ssh directory
+# exists and it's not owned by root then switch and run as that user instead
+# to use public key authentication.
 ##############################################################################
 
 stat_dir="/src"
