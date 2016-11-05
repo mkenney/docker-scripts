@@ -2,6 +2,8 @@
 
 By default, force the `dev` user's `uid` and `gid` to match the user/group that owns the project directory (`/src`) and run a command as that user. If a ~/.ssh directory has been mounted into the `dev` user's home directory (`/home/dev`) and it's not owned by root, then that `uid` and `gid` will be used instead in order to use public key authentication.
 
+If the project directory is owned by `root` then files will be written out as `root`...
+
 # `composer-wrapper`
 
 Credit goes to https://github.com/graze/docker-composer/blob/master/php-7.0/composer-wrapper
