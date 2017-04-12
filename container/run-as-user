@@ -30,6 +30,13 @@ else
     gid=$(stat -c '%g' $stat_dir)
 fi
 
+# Ensure the correct user id is available in the sudoers file (if the
+# specified UID already existed in the image)
+id -nu $uid > /dev/null 2>&1
+if [ 0 -eq $? ]; then
+    echo "$(id -nu $uid) ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
+fi
+
 # update the dev user with the specified UID/GID values
 groupmod -g $gid -o dev > /dev/null 2>&1
 usermod -u $uid -o dev > /dev/null 2>&1
@@ -42,12 +49,5 @@ while [[ "/run-as-user" == "${cmd:0:12}" ]]; do
     shift
     cmd="$@"
 done
-
-# Ensure the correct user id is available in the sudoers file (if the
-# specified UID already existed in the image)
-id -nu $uid > /dev/null 2>&1
-if [ 0 -eq $? ]; then
-    echo "$(id -nu $uid) ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
-fi
 
 sudo -u dev $@
