@@ -34,4 +34,10 @@ groupmod -g $gid -o dev > /dev/null 2>&1
 usermod -u $uid -o dev > /dev/null 2>&1
 chown -R dev:dev ~dev/ > /dev/null 2>&1
 
+# Add support for using this script as both an entrypoint or a command in
+# images wtih no entrypoint
+if [[ "/run-as-user" == "${@:0:12}" ]]; then
+    shift
+fi
+
 sudo -u dev $@
