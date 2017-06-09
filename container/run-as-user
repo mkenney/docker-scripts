@@ -40,7 +40,6 @@ fi
 # update the dev user with the specified UID/GID values
 groupmod -g $gid -o dev > /dev/null 2>&1
 usermod -u $uid -o dev > /dev/null 2>&1
-chown -R dev:dev ~dev/ > /dev/null 2>&1
 
 # prevent circular calls to this script (legacy support)
 cmd="$@"
