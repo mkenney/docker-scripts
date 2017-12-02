@@ -44,7 +44,11 @@ chown -R dev:dev ~dev/ > /dev/null 2>&1
 
 # prevent circular calls to this script (legacy support)
 cmd="$@"
-while [[ "/run-as-user" == "${cmd:0:12}" ]]; do
+cmda=`expr "x$cmd" : "x.\{0\}\(.\{0,12\}\)"`
+cmdb=`expr "x$cmd" : "x.\{1\}\(.\{1,12\}\)"`
+exit 1
+
+while [ "/run-as-user" = "${cmda}" ] || [ "/run-as-user" = "${cmdb}" ]; do
     shift
     cmd="$@"
 done
