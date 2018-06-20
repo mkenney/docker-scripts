@@ -10,7 +10,7 @@ Credit goes to https://github.com/graze/docker-composer/blob/master/php-7.0/comp
 
 * Loop over each argument and append the argument if the command matches one we need to use `--ignore-platform-reqs` with. Found using the following search: https://github.com/composer/composer/search?q=ignore-platform-reqs+path%3Asrc%2FComposer%2FCommand%2F Uses `set` to update the arguments, see https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html.
 
-# `set-ssh-key-perms.sh`
+# `set-ssh-key-perms`
 
 Credit goes to https://nickjanetakis.com/blog/docker-tip-56-volume-mounting-ssh-keys-into-a-docker-container
 
