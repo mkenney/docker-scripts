@@ -52,4 +52,4 @@ while [ "/run-as-user" = "${cmda}" ] || [ "/run-as-user" = "${cmdb}" ]; do
     cmd="$@"
 done
 
-sudo -u dev $@
+sudo -i -u dev $@
