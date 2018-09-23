@@ -15,5 +15,7 @@ for argument in "$@"; do
     esac
 done
 
+php --version
+
 # Call composer with the updated arguments.
 exec php /usr/local/bin/composer "$@"
